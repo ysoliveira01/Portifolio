@@ -25,14 +25,19 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # NOVO PASSO: Configurar o Docker Buildx
-      # Este passo é crucial para habilitar o cache GHA
+      # PASSO 1: Configurar o Docker Buildx
+      # Criar um builder novo e nomeado que suporte o cache GHA
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          # Usa o driver 'docker' para criar um builder,
-          # mas o 'setup-buildx-action' configura ele para suportar o cache GHA
+          # Define o nome do builder que será criado
+          # Você pode escolher qualquer nome, 'mybuilder' é um exemplo
+          buildkitd-flags: --debug
           driver: docker
+          driver-opts: |
+            image=moby/buildkit:latest
+          # Use 'append: true' para adicionar a um builder existente ou 'false' para um novo
+          # builder: mybuilder # Nome do builder. Se omitido, usará o default.
 
       - name: Extract Docker metadata (tags)
         id: meta
@@ -43,6 +48,7 @@ jobs:
             latest
             v${{ github.run_number }}
 
+      # PASSO 2: Build e Push da imagem Docker
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -50,6 +56,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # Certifique-se que o cache-from e cache-to estão usando o escopo correto
+          # Agora, o cache do GHA deve funcionar corretamente
           cache-from: type=gha,scope=${{ github.workflow }}
           cache-to: type=gha,scope=${{ github.workflow }},mode=max
