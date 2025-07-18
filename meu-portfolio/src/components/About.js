@@ -6,10 +6,9 @@ function About() {
   return (
     <section id="about" className="about-section">
       <div className="container">
-        <h2>Olá! Eu sou [Seu Nome].</h2>
+        <h2>Olá! Eu sou Yara Souza.</h2>
         <p className="intro-text">
-          Sou um(a) **[Sua Área Principal, ex: Desenvolvedor Frontend e UI/UX Designer]** com experiência em ajudar startups a lançar e escalar seus produtos.
-          Minha paixão está em criar experiências de usuário intuitivas e eficientes, transformando ideias complexas em soluções digitais elegantes.
+          Sou Analista DevOps com sólida experiência em ambientes de computação em nuvem, orquestração de containers e automação de infraestrutura. Atuando desde 2023 em empresas de tecnologia, desenvolvo e mantenho pipelines de integração e entrega contínua (CI/CD) utilizando ferramentas como GitLab CI, Jenkins e GitHub Actions. Tenho forte domínio em Docker e Kubernetes, com gestão de clusters em múltiplas nuvens públicas (AWS, GCP, Azure, Huawei e Tencent), e prática avançada em infraestrutura como código (IaC) com Terraform. Minha atuação abrange o suporte e deploy de lojas Magento 1 e 2 em ambientes Kubernetes e máquinas virtuais, além de automações de scripts em Python e Shell Script para otimização de processos operacionais e gestão de bases de dados. Participei de projetos de migração de infraestrutura e dados entre provedores de nuvem, contribuindo para a escalabilidade, segurança e alta disponibilidade dos serviços. Sou adepta das melhores práticas DevOps, utilizando ferramentas como Helm, ArgoCD, Cloudflare, Jira e Harbor para garantir ambientes padronizados, monitorados e confiáveis. Com formação técnica em Informática e tecnólogo em Análise e Desenvolvimento de Sistemas, possuo conhecimentos abrangentes em programação orientada a objetos, redes, bancos de dados e desenvolvimento web. Objetivo profissional: Expandir minha atuação em projetos desafiadores na área de DevOps e Cloud Computing, aplicando minhas habilidades para criar soluções automatizadas, escaláveis e seguras que potencializem a eficiência das operações e entregas contínuas.
         </p>
 
         <h3>Minhas Habilidades</h3>
