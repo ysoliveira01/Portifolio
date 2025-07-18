@@ -1,0 +1,41 @@
+/* src/index.css */
+
+/* Reset básico para remover margens e preenchimentos padrão do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif; /* Exemplo de fonte, adapte ou adicione no index.html */
+  background-color: #121212; /* Cor de fundo escura similar ao exemplo */
+  color: #e0e0e0; /* Cor do texto padrão para contraste */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilos gerais para links */
+a {
+  color: #BB86FC; /* Uma cor roxa para links, similar ao exemplo */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #3700B3; /* Um tom mais escuro no hover */
+}
+
+/* Estilos para seções do portfólio (ex: padding geral) */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Títulos de seção */
+h1, h2, h3, h4, h5, h6 {
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}

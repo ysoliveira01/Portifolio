@@ -1,0 +1,124 @@
+/* src/components/Projects.css */
+.projects-section {
+  background-color: #1a1a1a;
+  padding-bottom: 50px; /* Para não ficar muito junto do footer */
+}
+
+.projects-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #BB86FC;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Para empurrar links para baixo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.project-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.project-card .project-description {
+  font-size: 1rem;
+  color: #c0c0c0;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Permite que a descrição ocupe espaço flexível */
+}
+
+.project-card .project-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.project-card .tech-tag {
+  background-color: #3700B3; /* Cor mais escura para tags */
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px; /* Espaço entre as tags e os links */
+}
+
+.project-link {
+  background-color: #BB86FC;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-link.github {
+  background-color: #4CAF50; /* Um verde para GitHub */
+}
+
+.project-link.github:hover {
+  background-color: #388E3C;
+  transform: translateY(-2px);
+}
+
+.project-link.live {
+  background-color: #BB86FC; /* Cor roxa padrão */
+}
+
+.project-link.live:hover {
+  background-color: #3700B3;
+  transform: translateY(-2px);
+}
+
+/* Estilos para a seção de artigos */
+.articles-section {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid #333;
+}
+
+.articles-section h3 {
+  font-size: 2rem;
+  color: #BB86FC;
+  margin-bottom: 20px;
+}
+
+.articles-section p {
+  font-size: 1.1rem;
+  color: #c0c0c0;
+}
+
+.articles-section a {
+  color: #BB86FC;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.articles-section a:hover {
+  color: #3700B3;
+}

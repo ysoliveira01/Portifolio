@@ -1,0 +1,57 @@
+/* src/components/About.css */
+.about-section {
+  text-align: center;
+  background-color: #121212; /* Cor de fundo */
+}
+
+.about-section .container {
+  max-width: 800px; /* Um pouco mais estreito para o texto */
+}
+
+.about-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  color: #BB86FC; /* Cor de destaque */
+}
+
+.about-section .intro-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  color: #c0c0c0;
+}
+
+.about-section h3 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Espaçamento entre os itens de habilidade */
+  margin-top: 20px;
+}
+
+.skill-item {
+  background-color: #2a2a2a;
+  color: #BB86FC;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Opcional: estilo para a foto de perfil */
+.profile-photo {
+  width: 200px; /* Ajuste o tamanho conforme necessário */
+  height: 200px;
+  border-radius: 50%; /* Para uma foto circular */
+  object-fit: cover;
+  margin-top: 40px;
+  border: 5px solid #BB86FC; /* Borda de destaque */
+  box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
+}
