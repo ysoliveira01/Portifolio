@@ -7,8 +7,12 @@
   box-sizing: border-box;
 }
 
+/* Importar fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+
 body {
-  font-family: 'Montserrat', sans-serif; /* Exemplo de fonte, adapte ou adicione no index.html */
+  font-family: 'Montserrat', sans-serif; /* Fonte padrão para o corpo */
   background-color: #121212; /* Cor de fundo escura similar ao exemplo */
   color: #e0e0e0; /* Cor do texto padrão para contraste */
   line-height: 1.6;
@@ -30,7 +34,7 @@ a:hover {
 /* Estilos para seções do portfólio (ex: padding geral) */
 section {
   padding: 80px 20px;
-  max-width: 1200px;
+  max-width: 1200px; /* Largura máxima para seções gerais, 'About' tem seu próprio max-width */
   margin: 0 auto;
 }
 

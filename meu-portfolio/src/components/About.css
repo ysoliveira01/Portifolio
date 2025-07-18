@@ -1,37 +1,119 @@
 /* src/components/About.css */
+
 .about-section {
-  text-align: center;
-  background-color: #121212; /* Cor de fundo */
+  background-color: #121212; /* Fundo escuro */
+  padding: 80px 0; /* Padding vertical, padding horizontal será controlado internamente */
+  text-align: left; /* Alinha o texto à esquerda por padrão na seção */
 }
 
-.about-section .container {
-  max-width: 800px; /* Um pouco mais estreito para o texto */
+/* Wrapper para o layout de duas colunas (introdução + imagem) */
+.intro-hero-wrapper {
+  display: flex; /* Habilita Flexbox para as colunas */
+  flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+  justify-content: space-between; /* Espaço entre as colunas */
+  align-items: center; /* Alinha verticalmente no centro */
+  max-width: 1200px; /* Largura máxima para este bloco */
+  margin: 0 auto; /* Centraliza este bloco */
+  padding: 0 20px; /* Padding lateral para o conteúdo interno */
+  margin-bottom: 60px; /* Espaço entre este bloco e a descrição detalhada */
 }
 
-.about-section h2 {
-  font-size: 2.8rem;
+/* Coluna da Esquerda: Texto de Introdução */
+.intro-text-column {
+  flex: 2; /* Ocupa 2 partes do espaço disponível (ex: 66%) */
+  min-width: 300px; /* Largura mínima para evitar que o texto fique muito estreito */
+  padding-right: 30px; /* Espaço entre o texto e a imagem */
+}
+
+/* Retângulo com "Oi!! Eu sou Yara!" */
+.greeting-box {
+  background-color: rgba(187, 134, 252, 0.2); /* Roxo mais claro e transparente */
+  border-radius: 8px;
+  padding: 10px 20px;
+  display: inline-flex; /* Para que o fundo se ajuste ao conteúdo */
+  align-items: center;
+  gap: 15px; /* Espaço entre o emoji e o texto */
   margin-bottom: 25px;
-  color: #BB86FC; /* Cor de destaque */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.about-section .intro-text {
-  font-size: 1.2rem;
+.greeting-emoji {
+  font-size: 2.5rem; /* Tamanho do emoji */
+  line-height: 1; /* Para alinhar bem com o texto */
+}
+
+.greeting-text {
+  font-size: 2.5rem; /* Tamanho do texto "Oi!! Eu sou Yara!" */
+  font-weight: 700;
+  color: #e0e0e0; /* Cor da letra (branca/clara) */
+  margin: 0; /* Remove margem padrão do h2 */
+}
+
+/* Estilos para o subtítulo "Sou Analista Devops..." */
+.subtitle-text {
+  font-family: 'Roboto Mono', monospace; /* Nova fonte para esta parte */
+  font-size: 1.5rem; /* Tamanho da fonte */
+  font-weight: 400;
+  color: #e0e0e0; /* Cor da letra (branca) */
+  line-height: 1.4;
+  margin-bottom: 0; /* Removido margem inferior, pois o wrapper já tem */
+}
+
+/* Estilos para as palavras enfatizadas (roxas) */
+.subtitle-text .highlight {
+  color: #BB86FC; /* Cor roxa para destaque */
+  font-weight: 700; /* Negrito para ênfase */
+}
+
+/* Coluna da Direita: Imagem */
+.hero-image-column {
+  flex: 1; /* Ocupa 1 parte do espaço disponível (ex: 33%) */
+  display: flex;
+  justify-content: center; /* Centraliza a imagem na coluna */
+  align-items: center;
+  padding-left: 30px; /* Espaço entre a imagem e o texto */
+}
+
+.hero-image {
+  max-width: 100%; /* Garante que a imagem seja responsiva */
+  height: auto;
+  border-radius: 10px; /* Cantos arredondados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Sombra para a imagem */
+}
+
+/* Estilos para a descrição detalhada (texto longo) */
+.detailed-description {
+  font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 40px;
   color: #c0c0c0;
+  text-align: justify; /* Justifica o texto */
+  width: 100%; /* Ocupa a largura total */
+  max-width: 1200px; /* Define uma largura máxima para legibilidade em telas muito grandes */
+  margin: 0 auto; /* Centraliza o bloco de texto */
+  padding: 0 20px; /* Adiciona padding lateral para não encostar nas bordas */
+  margin-bottom: 50px; /* Espaço após a descrição */
 }
 
-.about-section h3 {
+/* Wrapper para o título e grid de habilidades */
+.skills-section-wrapper {
+  max-width: 1200px; /* Mesma largura da descrição detalhada */
+  margin: 0 auto; /* Centraliza */
+  padding: 0 20px; /* Padding lateral */
+}
+
+/* Estilos para o título das habilidades */
+.skills-section-wrapper h3 {
   font-size: 2rem;
   margin-bottom: 30px;
   color: #e0e0e0;
+  text-align: center; /* Centraliza o título das habilidades */
 }
 
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px; /* Espaçamento entre os itens de habilidade */
+  justify-content: center; /* Centraliza as habilidades */
+  gap: 15px;
   margin-top: 20px;
 }
 
@@ -45,13 +127,67 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Opcional: estilo para a foto de perfil */
-.profile-photo {
-  width: 200px; /* Ajuste o tamanho conforme necessário */
-  height: 200px;
-  border-radius: 50%; /* Para uma foto circular */
-  object-fit: cover;
-  margin-top: 40px;
-  border: 5px solid #BB86FC; /* Borda de destaque */
-  box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
+/* Media Queries para Responsividade */
+@media (max-width: 992px) { /* Para tablets e laptops menores */
+  .intro-text-column {
+    padding-right: 20px;
+  }
+  .hero-image-column {
+    padding-left: 20px;
+  }
+  .greeting-text {
+    font-size: 2.2rem;
+  }
+  .subtitle-text {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) { /* Para tablets em modo retrato e celulares */
+  .intro-hero-wrapper {
+    flex-direction: column; /* Coloca as colunas uma abaixo da outra */
+    align-items: flex-start; /* Alinha o conteúdo à esquerda */
+    gap: 40px; /* Espaço entre o texto e a imagem */
+  }
+
+  .intro-text-column {
+    flex: none; /* Remove flex grow */
+    width: 100%; /* Ocupa a largura total */
+    padding-right: 0; /* Remove padding lateral */
+  }
+
+  .hero-image-column {
+    flex: none; /* Remove flex grow */
+    width: 100%; /* Ocupa a largura total */
+    padding-left: 0; /* Remove padding lateral */
+    order: -1; /* Coloca a imagem acima do texto em mobile, se desejar */
+    margin-bottom: 20px; /* Espaço abaixo da imagem */
+  }
+
+  .greeting-text {
+    font-size: 2rem;
+  }
+  .subtitle-text {
+    font-size: 1.2rem;
+  }
+  .detailed-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) { /* Para celulares menores */
+  .greeting-text {
+    font-size: 1.8rem;
+  }
+  .subtitle-text {
+    font-size: 1rem;
+  }
+  .greeting-box {
+    flex-direction: column; /* Empilha emoji e texto em telas muito pequenas */
+    gap: 5px;
+    padding: 8px 15px;
+  }
+  .greeting-emoji {
+    font-size: 2rem;
+  }
 }
