@@ -1,8 +1,76 @@
 // src/components/About.js
-import React from 'react';
-import './About.css'; // Mantenha este arquivo para os estilos do About
+import React, { useState, useEffect, useRef } from 'react';
+import './About.css';
+
+// Importar apenas os ícones que serão realmente utilizados do Lucide React.
+// Se você adicionar novas habilidades com novos ícones, lembre-se de importá-los aqui.
+// Verifique a lista completa de ícones em: https://lucide.dev/icons/
+import {
+  Cloud, Code, GitBranch, Server, Package,
+  Rocket, Github, LayoutDashboard, Terminal,
+  Globe, Box, CircleDot,
+  Store, Anchor,
+  GitFork,
+  Layers,
+  HardDrive,
+} from 'lucide-react';
 
 function About() {
+  // Mapeamento das habilidades para seus ícones correspondentes
+  const skills = [
+    { name: 'DevOps', icon: Cloud },
+    { name: 'Cloud Computing', icon: Server },
+    { name: 'AWS', icon: Cloud },
+    { name: 'GCP', icon: Cloud },
+    { name: 'Azure', icon: Cloud },
+    { name: 'Docker', icon: Package },
+    { name: 'Kubernetes', icon: Layers },
+    { name: 'CI/CD', icon: Rocket },
+    { name: 'GitLab CI', icon: GitFork },
+    { name: 'Jenkins', icon: Box },
+    { name: 'GitHub Actions', icon: Github },
+    { name: 'Terraform', icon: Code },
+    { name: 'Python', icon: Terminal },
+    { name: 'Shell Script', icon: Terminal },
+    { name: 'Magento', icon: Store },
+    { name: 'Helm', icon: Anchor },
+    { name: 'ArgoCD', icon: GitBranch },
+    { name: 'Cloudflare', icon: Globe },
+    // { name: 'Jira', icon: LayoutDashboard }, // REMOVIDO: Ferramenta Jira
+    { name: 'Harbor', icon: HardDrive },
+    { name: 'React', icon: CircleDot },
+    { name: 'JavaScript', icon: Code },
+  ];
+
+  // Estado para controlar a visibilidade da seção de habilidades para a animação
+  const [skillsVisible, setSkillsVisible] = useState(false);
+  // Ref para o elemento que será observado pelo Intersection Observer
+  const skillsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Define skillsVisible como true se o elemento estiver visível, false se não
+        setSkillsVisible(entries[0].isIntersecting);
+      },
+      {
+        threshold: 0.1, // A animação será disparada quando 10% do elemento estiver visível
+      }
+    );
+
+    // Se o elemento de referência existir, comece a observá-lo
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+
+    // Função de limpeza: desconecta o observador quando o componente é desmontado
+    return () => {
+      if (skillsRef.current) {
+        observer.unobserve(skillsRef.current);
+      }
+    };
+  }, []); // O array vazio garante que o useEffect rode apenas uma vez (no montagem do componente)
+
   return (
     <section id="about" className="about-section">
       {/* Wrapper para o layout de duas colunas: Introdução + Imagem */}
@@ -11,7 +79,7 @@ function About() {
         <div className="intro-text-column">
           {/* Retângulo com "Oi!! Eu sou Yara!" e emoji */}
           <div className="greeting-box">
-            <span className="greeting-emoji">👋</span> {/* Emoji de mão acenando */}
+            <span className="greeting-emoji">👋</span>
             <h2 className="greeting-text">Oi!! Eu sou Yara!</h2>
           </div>
 
@@ -39,31 +107,27 @@ function About() {
       </p>
 
       {/* Título e grid de habilidades */}
-      <div className="skills-section-wrapper">
-        <h3>Minhas Habilidades</h3>
-        <div className="skills-grid">
-          <span className="skill-item">DevOps</span>
-          <span className="skill-item">Cloud Computing</span>
-          <span className="skill-item">AWS</span>
-          <span className="skill-item">GCP</span>
-          <span className="skill-item">Azure</span>
-          <span className="skill-item">Docker</span>
-          <span className="skill-item">Kubernetes</span>
-          <span className="skill-item">CI/CD</span>
-          <span className="skill-item">GitLab CI</span>
-          <span className="skill-item">Jenkins</span>
-          <span className="skill-item">GitHub Actions</span>
-          <span className="skill-item">Terraform</span>
-          <span className="skill-item">Python</span>
-          <span className="skill-item">Shell Script</span>
-          <span className="skill-item">Magento</span>
-          <span className="skill-item">Helm</span>
-          <span className="skill-item">ArgoCD</span>
-          <span className="skill-item">Cloudflare</span>
-          <span className="skill-item">Jira</span>
-          <span className="skill-item">Harbor</span>
-          <span className="skill-item">React</span>
-          <span className="skill-item">JavaScript</span>
+      {/* Adicionando o ref para o Intersection Observer */}
+      <div className="skills-section-wrapper" ref={skillsRef}>
+        {/* Título "Minhas Habilidades" dentro do seu próprio quadrado */}
+        <div className={`skills-title-box ${skillsVisible ? 'animate-skill' : ''}`}>
+          <h3 className="skills-title">Minhas Habilidades</h3>
+        </div>
+
+        {/* Retângulo roxo que agrupa todas as habilidades */}
+        <div className="all-skills-container">
+          <div className="skills-grid">
+            {skills.map((skill, index) => (
+              <div
+                key={index}
+                className={`skill-item ${skillsVisible ? 'animate-skill' : ''}`}
+                style={{ transitionDelay: `${index * 0.05}s` }} // Atraso ainda mais rápido
+              >
+                {skill.icon && <skill.icon size={30} className="skill-icon" />}
+                <span className="skill-name">{skill.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

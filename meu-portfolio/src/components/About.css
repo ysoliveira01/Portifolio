@@ -99,36 +99,99 @@
   max-width: 1200px; /* Mesma largura da descrição detalhada */
   margin: 0 auto; /* Centraliza */
   padding: 0 20px; /* Padding lateral */
+  text-align: center; /* Centraliza o título e o grid de habilidades */
+  margin-top: 50px; /* Espaço antes da seção de habilidades */
 }
 
-/* Estilos para o título das habilidades */
-.skills-section-wrapper h3 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #e0e0e0;
-  text-align: center; /* Centraliza o título das habilidades */
+/* Estilos para o quadrado do título "Minhas Habilidades" */
+.skills-title-box {
+  display: inline-block; /* Para que o fundo se ajuste ao conteúdo e possa ser centralizado */
+  background-color: #121212; /* Fundo preto */
+  border: 2px solid #BB86FC; /* Borda roxa */
+  border-radius: 8px;
+  padding: 10px 30px;
+  margin-bottom: 40px; /* Espaço abaixo do título */
+  box-shadow: 0 0 15px rgba(187, 134, 252, 0.4); /* Brilho roxo */
+
+  /* Animação */
+  opacity: 0;
+  transform: translateY(30px); /* Diminuído o deslocamento inicial */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animação mais rápida */
+}
+
+/* Estado final para a animação do título */
+.skills-title-box.animate-skill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-title {
+  font-family: 'Orbitron', sans-serif; /* Nova fonte */
+  font-size: 2.2rem; /* Tamanho da fonte */
+  font-weight: 700;
+  color: #e0e0e0; /* Cor do texto (branca/clara) */
+  margin: 0; /* Remove margem padrão do h3 */
+  text-transform: uppercase; /* Opcional: para um visual mais "techy" */
+  letter-spacing: 2px;
+}
+
+/* Retângulo roxo que agrupa todas as habilidades */
+.all-skills-container {
+  background-color: rgba(187, 134, 252, 0.1); /* Roxo transparente para o container */
+  border-radius: 15px;
+  padding: 30px; /* Diminuído o padding interno do container */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra para o container */
 }
 
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Centraliza as habilidades */
-  gap: 15px;
-  margin-top: 20px;
+  display: grid;
+  /* Colunas com tamanho fixo para uniformidade, ajustável com auto-fit */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Reduzido minmax */
+  gap: 15px; /* Diminuído o gap */
+  justify-items: center; /* Centraliza os itens dentro das células do grid */
 }
 
 .skill-item {
   background-color: #2a2a2a;
-  color: #BB86FC;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #BB86FC; /* Cor roxa para o texto e ícone */
+  padding: 10px 8px; /* Diminuído o padding interno do card */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column; /* Ícone acima do texto */
+  align-items: center; /* Centraliza conteúdo horizontalmente */
+  justify-content: center; /* Centraliza conteúdo verticalmente */
+  text-align: center;
+  width: 100px; /* Largura fixa para uniformidade */
+  height: 100px; /* Altura fixa para uniformidade */
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.4s ease-out, transform 0.4s ease-out; /* Animação mais rápida */
+
+  /* Estado inicial para a animação */
+  opacity: 0;
+  transform: translateY(30px); /* Diminuído o deslocamento inicial */
 }
 
+/* Estado final para a animação (quando a classe animate-skill é adicionada) */
+.skill-item.animate-skill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-icon {
+  margin-bottom: 8px; /* Diminuído o margin-bottom */
+  color: #BB86FC;
+  font-size: 25px; /* Ajustado o tamanho do ícone */
+}
+
+.skill-name {
+  font-size: 0.8rem; /* Diminuído o tamanho da fonte */
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+
 /* Media Queries para Responsividade */
-@media (max-width: 992px) { /* Para tablets e laptops menores */
+@media (max-width: 992px) {
   .intro-text-column {
     padding-right: 20px;
   }
@@ -141,27 +204,43 @@
   .subtitle-text {
     font-size: 1.3rem;
   }
+  .skills-title {
+    font-size: 1.8rem;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Ajusta colunas */
+  }
+  .skill-item {
+    width: 90px; /* Ajusta largura fixa */
+    height: 90px; /* Ajusta altura fixa */
+  }
+  .skill-icon {
+    font-size: 22px;
+  }
+  .skill-name {
+    font-size: 0.75rem;
+  }
 }
 
-@media (max-width: 768px) { /* Para tablets em modo retrato e celulares */
+@media (max-width: 768px) {
   .intro-hero-wrapper {
-    flex-direction: column; /* Coloca as colunas uma abaixo da outra */
-    align-items: flex-start; /* Alinha o conteúdo à esquerda */
-    gap: 40px; /* Espaço entre o texto e a imagem */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
   }
 
   .intro-text-column {
-    flex: none; /* Remove flex grow */
-    width: 100%; /* Ocupa a largura total */
-    padding-right: 0; /* Remove padding lateral */
+    flex: none;
+    width: 100%;
+    padding-right: 0;
   }
 
   .hero-image-column {
-    flex: none; /* Remove flex grow */
-    width: 100%; /* Ocupa a largura total */
-    padding-left: 0; /* Remove padding lateral */
-    order: -1; /* Coloca a imagem acima do texto em mobile, se desejar */
-    margin-bottom: 20px; /* Espaço abaixo da imagem */
+    flex: none;
+    width: 100%;
+    padding-left: 0;
+    order: -1;
+    margin-bottom: 20px;
   }
 
   .greeting-text {
@@ -173,9 +252,35 @@
   .detailed-description {
     font-size: 1rem;
   }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+  }
+  .skill-item {
+    width: 80px;
+    height: 80px;
+    padding: 8px 5px;
+  }
+  .skill-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  .skill-name {
+    font-size: 0.7rem;
+  }
+  .skills-title {
+    font-size: 1.5rem;
+  }
+  .skills-title-box {
+    padding: 8px 20px;
+  }
+  .all-skills-container {
+    padding: 20px;
+  }
 }
 
-@media (max-width: 480px) { /* Para celulares menores */
+@media (max-width: 480px) {
   .greeting-text {
     font-size: 1.8rem;
   }
@@ -183,11 +288,36 @@
     font-size: 1rem;
   }
   .greeting-box {
-    flex-direction: column; /* Empilha emoji e texto em telas muito pequenas */
+    flex-direction: column;
     gap: 5px;
     padding: 8px 15px;
   }
   .greeting-emoji {
     font-size: 2rem;
+  }
+  .skills-title {
+    font-size: 1.2rem;
+  }
+  .skills-title-box {
+    padding: 6px 15px;
+  }
+  .all-skills-container {
+    padding: 10px;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 8px;
+  }
+  .skill-item {
+    width: 60px;
+    height: 60px;
+    padding: 3px;
+  }
+  .skill-icon {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+  .skill-name {
+    font-size: 0.6rem;
   }
 }

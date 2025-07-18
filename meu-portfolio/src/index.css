@@ -8,7 +8,7 @@
 }
 
 /* Importar fontes do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&family=Orbitron:wght@700&display=swap');
 
 
 body {
@@ -31,11 +31,9 @@ a:hover {
   color: #3700B3; /* Um tom mais escuro no hover */
 }
 
-/* Estilos para seções do portfólio (ex: padding geral) */
+/* Estilos para seções do portfólio (padding horizontal será controlado internamente) */
 section {
-  padding: 80px 20px;
-  max-width: 1200px; /* Largura máxima para seções gerais, 'About' tem seu próprio max-width */
-  margin: 0 auto;
+  padding: 80px 0; /* Padding vertical, horizontal será controlado pelos wrappers */
 }
 
 /* Títulos de seção */
